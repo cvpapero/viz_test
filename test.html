@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="style.css" rel="stylesheet" />
+    <meta charset=utf-8 />
+    <title>Cytoscape.js initialisation</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/qtip2/2.2.0/jquery.qtip.min.js"></script>
+    <script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+    <script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+    <script type="text/javascript" type="text/javascript"></script>
+
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="graph_code.js"></script>
+    <script src="ros_code.js"></script>
+    <!--script src="functions.js"></script -->
+
+  </head>
+  <body>
+    <div id="input_okao_id">
+      <!--form name="database" action="">
+	<label>input database:
+	<input name="database" id="id_database" type="text" value="" />
+	</label>
+      </form>
+      <form name="table" action="">
+	<label>input table:
+	<input name="table" id="id_table" type="text" value="" />
+	</label>
+      </form-->
+      <form name="analysis" action="">
+	<label> select analysis okao_id:
+	<input name="textbox1" id="id_textbox1" type="number" value="" />
+	</label>
+	<input type="button" value="Exec" onclick="onButtonClickAnalysis();" />
+	<br><br>
+      </form>
+
+      <form name="visualize" action="">
+	<label>select visualize okao_id:
+	  <input name="textbox2" id="id_textbox2" type="number" value="" />
+	</label>
+	<input type="button" value="Exec" onclick="onButtonClickVisualize();" />
+      </form>
+
+      <hr/>
+    </div>
+    <div id="cy"></div>
+  </body>
+</html>

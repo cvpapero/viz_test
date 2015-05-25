@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset=utf-8 />
+<title>AngularJS example</title>
+
+<link href="styles.css" rel="stylesheet" />
+<!--link href="jquery_scripts/jquery-ui-1.11.4/jquery-ui.css" rel="stylesheet" /-->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+<link href="http://cdnjs.cloudflare.com/ajax/libs/qtip2/2.2.0/jquery.qtip.min.css" rel="stylesheet" />
+
+
+<script src="jquery_scripts/jquery-1.11.3.min.js"></script>
+<script src="jquery_scripts/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/qtip2/2.2.0/jquery.qtip.min.js"></script>
+<script src="angular.js"></script>
+<script type="text/javascript" src="EventEmitter2/lib/eventemitter2.js"></script>
+<script type="text/javascript" src="roslibjs/build/roslib.min.js"></script>
+<script type="text/javascript" type="text/javascript"></script>
+
+<script src="graph_codes2.js"></script>
+<script src="ros_codes2.js"></script>
+<script src="interface.js"></script>
+
+</head>
+<body>
+  <div id="logo"></div>
+  <div id="cy"></div>
+  <div id="map"></div>
+
+  <table id="okao-table">
+    <tbody>
+      <tr>
+	<td>
+	  Analysis Master ID:
+	  <input type="number" id="id_analy" value="1" min="1" />
+	  <button id="btn_analy">Exec</button>
+	  <br>
+	  Request Master ID:
+	  <input type="number" id="id_visual" value="1" min="1" />
+	  <button id="btn_visual">Exec</button>
+	</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div id="time-table" >
+    Time:
+    <input id="slidvalmin" type="text" size="10" readonly />
+    <input id="slidvalmax" type="text" size="10" readonly />
+    <p id="slider"></p>
+  </div>
+
+</body>
+</html>
+
+

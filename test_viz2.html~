@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="styles.css" rel="stylesheet" />
+<!--link href="jquery_scripts/jquery-ui-1.11.4/jquery-ui.css" rel="stylesheet" /-->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+<meta charset=utf-8 />
+<title>AngularJS example</title>
+<script src="jquery_scripts/jquery-1.11.3.min.js"></script>
+<script src="jquery_scripts/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script>
+<script src="angular.js"></script>
+<script type="text/javascript" src="EventEmitter2/lib/eventemitter2.js"></script>
+<script type="text/javascript" src="roslibjs/build/roslib.min.js"></script>
+<script type="text/javascript" type="text/javascript"></script>
+
+<script src="graph_codes.js"></script>
+<script src="ros_codes.js"></script>
+<script src="interface.js"></script>
+
+</head>
+<body>
+  <div id="logo"></div>
+  <div id="cy"></div>
+  
+  <table id="okao-table">
+    <tbody>
+      <tr>
+	<td>
+	  Analysis Master ID:
+	  <input type="number" id="id_analy" value="1"/>
+	  <button id="btn_analy">Exec</button>
+	  <br>
+	  Request Master ID:
+	  <input type="number" id="id_visual" value="1"/>
+	  <button id="btn_visual">Exec</button>
+	</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div id="time-table" >
+    Time:
+    <p id="slider"></p>
+    <br>
+    <input id="slidvalmin" type="text" size="10" readonly />
+    <input id="slidvalmax" type="text" size="10" readonly />
+  </div>
+
+</body>
+</html>
+
+

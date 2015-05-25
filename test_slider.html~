@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="style_ang.css" rel="stylesheet" />
+<!--link href="jquery_scripts/jquery-ui-1.11.4/jquery-ui.css" rel="stylesheet" /-->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<meta charset=utf-8 />
+<title>AngularJS example</title>
+<script src="jquery_scripts/jquery-1.11.3.min.js"></script>
+<script src="jquery_scripts/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="cytoscape.js-2.4.0/build/cytoscape.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+<script type="text/javascript" src="EventEmitter2/lib/eventemitter2.js"></script>
+<script type="text/javascript" src="roslibjs/build/roslib.min.js"></script>
+<script type="text/javascript" type="text/javascript"></script>
+
+<script src="graph_ang_code.js"></script>
+<script src="ros_ang_code.js"></script>
+<script src="interface.js"></script>
+
+</head>
+<body ng-app="app">
+  <div id="logo"></div>
+  <div id="cy"></div>
+  
+  <!--table id="people-table" ng-controller="PeopleCtrl">
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <th>Weight</th>
+      </tr>
+      <tr ng-repeat="person in people">
+        <td>{{person.name}}</td>
+        <td><input type="number" min="1" ng-model="person.weight" ng-change="onWeightChange(person)" /></td>
+      </tr>
+    </tbody>
+  </table-->
+
+  <table id="people-table" ng-controller="PeopleCtrl">
+    <tbody>
+      <!--tr>
+        <th>Name</th>
+        <th>Weight</th>
+      </tr>
+      <tr ng-repeat="person in people">
+        <td>{{person.name}}</td>
+        <td><input type="number" min="1" ng-model="person.weight" ng-change="onWeightChange(person)" /></td>
+      </tr-->
+      <tr>
+	<td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <table id="okao-table" ng-controller="OkaoCtrl">
+    <tbody>
+      <tr ng-repeat="okao_id in okao_ids">
+	<td>
+	  Master ID:
+	  <input type="number" ng-model="okao_id.id" min="1" max="20"/>
+	  <button ng-click="onClick(okao_id)">Exec</button>
+	  {{msg}}
+	</td>
+      </tr>
+      <!--select ng-model="selectedTime" ng-options="time for time in times"></select-->
+    </tbody>
+  </table>
+
+<div id="slider"></div>
+
+</body>
+</html>
+
+
