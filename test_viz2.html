@@ -18,30 +18,37 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/qtip2/2.2.0/jquery.qtip.min.js"></script>
 <script src="angular.js"></script>
 <script type="text/javascript" src="EventEmitter2/lib/eventemitter2.js"></script>
+<script type="text/javascript" src="EaselJS/lib/easeljs-0.8.0.min.js"></script>
 <script type="text/javascript" src="roslibjs/build/roslib.min.js"></script>
+<script type="text/javascript" src="ros2djs/build/ros2d.js"></script>
 <script type="text/javascript" type="text/javascript"></script>
 
 <script src="graph_codes2.js"></script>
 <script src="ros_codes2.js"></script>
-<script src="interface.js"></script>
 
 </head>
-<body>
+<body onload = "load()">
   <div id="logo"></div>
   <div id="cy"></div>
   <div id="map"></div>
+
 
   <table id="okao-table">
     <tbody>
       <tr>
 	<td>
+	  Mouse Point X:
+	  <p id="pos_x">[position]</p>
+	  Mouse Point Y:
+	  <p id="pos_y">[position]</p>
 	  Analysis Master ID:
 	  <input type="number" id="id_analy" value="1" min="1" />
 	  <button id="btn_analy">Exec</button>
-	  <br>
+	  <p id="analyOutput">[output]</p>
 	  Request Master ID:
 	  <input type="number" id="id_visual" value="1" min="1" />
 	  <button id="btn_visual">Exec</button>
+	  <p id="visualOutput">[output]</p>
 	</td>
       </tr>
     </tbody>

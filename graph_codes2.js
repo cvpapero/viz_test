@@ -1,70 +1,4 @@
 
-
-var elesJson = { 
-    nodes:[
-	{ data: { id: '', name: '' } }
-    ],
-    edges:[
-	{ data: { id: '', source: '', target: '' } }
-    ]
-};
-
-var jsonBuf = [];
-
-//ここでは、全てのメッセージをjson形式で保存しておく
-//別の関数によってcytoscapeで読み込める形式にする
-function msgBuffer( selectJson ){
-    jsonBuf = selectJson;
-    time_num = selectJson.length;
-    for(var i = 0; i < time_num; ++i){
-	time_buf[i] = jsonBuf[i].time_stamp;
-    }
-}
-
-//ここではjsonBufに代入されているjson形式データを選択する
-function selectFromBuf(start, end){
-
-    console.log('s:' + start.toString() + ', e:' + end.toString());
-    nowJson = {};
-    selectJson = []
-    for(var i = start; i < end; ++i){
-	nowJson[jsonBuf[i].okao_id] = jsonBuf[i];
-    }
-    for(var i in nowJson){
-	selectJson.push(nowJson[i]);
-    }
-    jsonToPeopleElems(selectJson);
-}
-
-//ここでは、選択されたjson形式の個人データをcytoscapeが読み込める形にする
-function jsonToPeopleElems( selectJson ){
-    var elem_nodes = [];
-    var elem_edges = [];
-
-    for(var i = 0; i < selectJson.length; ++i){
-	var okao_id = selectJson[i].okao_id.toString();
-	var target_id = selectJson[i].okao_id.toString();
-	var source_id = $("#id_visual").val().toString();
-	var name = selectJson[i].name.toString();
-
-	var elem_node = '{"data":{ "id": "' + okao_id +'", "name" : "'+name+'" }}';
-	elem_nodes.push(elem_node);
-	if (target_id != source_id){
-	    var name = selectJson[i].name.toString();
-	    var elem_edge = '{"data":{ "id": "e' + target_id 
-		+'", "source" : "'+source_id+'" ,"target" : "'+ target_id+ '" }}';
-	    elem_edges.push(elem_edge);	
-	}
-	
-    }
-
-    var elemsArray = '{ "nodes": ['+ elem_nodes.toString() + '] ,"edges": ['+ elem_edges.toString()+'] }';
-
-    var elesJson = JSON.parse(elemsArray);
-
-    cytoGraphOutput(elesJson);
-}
-
 function cytoGraphOutput(elesJson){
 
     $('#cy').cytoscape({
@@ -158,8 +92,6 @@ function cytoGraphOutput(elesJson){
 	    name: 'breadthfirst',
 	    padding: 10
 	},
-
-
 
 	ready: function(){
 	    // ready 1
