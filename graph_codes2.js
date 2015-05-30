@@ -16,8 +16,8 @@ function cytoGraphOutput(elesJson){
 	    .selector('edge')
 	    .css({
 		'target-arrow-shape': 'triangle',
-		'line-color': '#F2B1BA',
-		'target-arrow-color': '#F2B1BA',
+		'line-color': '#00BB00',
+		'target-arrow-color': '#00BB00',
 		'width': 2,
 	    })
 	    .selector(':selected')

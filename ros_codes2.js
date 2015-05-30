@@ -25,13 +25,13 @@ var elesJson = {
     ]
 };
 var jsonBuf = [];
-
+var pos_ok = false;
 
 function load(){
     var mapViewer = new ROS2D.Viewer({
 	divID : 'map',
-	width : 500,
-	height : 500
+	width : 700,
+	height : 700
     });
 
     var zoomMapView = new ROS2D.ZoomView({
@@ -60,6 +60,30 @@ function load(){
 
     var clickedImage = false;
     var selectedImageIndex = null;
+    var clickedPolygon = false;
+    var selectedPointIndex = null;
+
+    var pointCallBack = function(type, event, index) {
+	if (type === 'mousedown') {
+	    if (event.nativeEvent.shiftKey === true) {
+		polygon.remPoint(index);
+	    }
+	    else {
+		selectedPointIndex = index;
+	    }
+	}
+	clickedPolygon = true;
+    };
+    
+    var lineCallBack = function(type, event, index) {
+	if (type === 'mousedown') {
+	    if (event.nativeEvent.ctrlKey === true) {
+		polygon.splitLine(index);
+	    }
+	}
+	clickedPolygon = true;
+    };
+
     var imageCallBack = function(type, event, index) {
 	if (type === 'mousedown') {
 	    if (event.nativeEvent.shiftKey === true) {
@@ -72,11 +96,25 @@ function load(){
 	}
 	clickedImage = true;
     };
+
+ 
+    // Create the polygon
+    var polygon = new ROS2D.PolygonMarker({
+	pointSize : 0.3,
+	lineSize : 0.3,
+	lineColor : createjs.Graphics.getRGB(100, 100, 255, 1),
+	pointCallBack : pointCallBack,
+	lineCallBack : lineCallBack
+    });
+
     // Create the polygon
     var image = new ROS2D.ImageMarker({
 	imageSize : 0.01,
 	imageCallBack : imageCallBack
     });
+
+    // Add the polygon to the viewer
+    mapViewer.scene.addChild(polygon);  
     // Add the polygon to the viewer
     mapViewer.scene.addChild(image);  
     // Event listeners for mouse interaction with the stage
@@ -88,28 +126,28 @@ function load(){
 	jQuery( "#pos_x" ).text(pos.x);
 	jQuery( "#pos_y" ).text(pos.y);    
 	//jQuery( "#rotation" ).text();
-/*
-	if (selectedImageIndex != null){
+
+	if (selectedPointIndex != null && pos_ok == true){
 	    var pos = mapViewer.scene.globalToRos(event.stageX, event.stageY);
-	    image.moveImage(selectedImageIndex, pos);
+	    polygon.movePoint(selectedPointIndex, pos);
 	}
-*/
+
 
     });
-/*
+
     mapViewer.scene.addEventListener('stagemouseup', function(event) {	
 	// Add point when not clicked on the polygon
-	if (selectedImageIndex !== null) {
-	    selectedImageIndex = null;
+	if (selectedPointIndex !== null) {
+	    selectedPointIndex = null;
 	}
-	else if (mapViewer.scene.mouseInBounds === true && clickedImage === false) {
+	else if (mapViewer.scene.mouseInBounds === true && clickedPolygon === false && pos_ok == true) {
 	    var pos = mapViewer.scene.globalToRos(event.stageX, event.stageY);
-	    var name = 'images/okao/okao1.jpg'
-	    image.addImage(pos, name);			
+	    //var name = 'images/okao/okao1.jpg'
+	    polygon.addPoint(pos);			
 	}
-	clickedImage = false;	
+	clickedPolygon = false;	
     });
-*/
+
 
     function registerMouseHandlers(){
 	var mouseDown = false;
@@ -155,6 +193,7 @@ function load(){
 		    var rd = Math.atan2(event.stageY - startPos.y, 
 					event.stageX - startPos.x);
 		    var dg = rd * 180 / Math.PI;
+		    console.log('deg'+dg);
 		    rotMapView.rot(dg);
 		}
 	    }
@@ -342,6 +381,7 @@ function load(){
 			    + visualGraphClient.name
 			    + ': '
 			    + vizResult);
+		jQuery( "#visualOutput" ).text(vizResult.data);
 	    });
 	    return true;
 	});
@@ -383,10 +423,23 @@ function load(){
 		$(this).slider('option', 'max', time_num);
 	    }
 	});
-		
+	
+
+	
     }); 
     
-
+    $(function() {
+	$("[name='q1']").click(function(){
+	    var num = $("[name='q1']").index(this);
+	    console.log('radio:'+num);
+	    if(num == 1){
+		pos_ok = true;
+	    } 
+	    else{
+		pos_ok = false; 
+	    }
+	});
+    });
 }
 
 

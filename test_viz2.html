@@ -38,17 +38,33 @@
       <tr>
 	<td>
 	  Mouse Point X:
-	  <p id="pos_x">[position]</p>
+	</td>
+	<td id="pos_x">[position]</td>
+      </tr>
+      <tr>
+	<td>
 	  Mouse Point Y:
-	  <p id="pos_y">[position]</p>
-	  Analysis Master ID:
-	  <input type="number" id="id_analy" value="1" min="1" />
-	  <button id="btn_analy">Exec</button>
-	  <p id="analyOutput">[output]</p>
-	  Request Master ID:
-	  <input type="number" id="id_visual" value="1" min="1" />
-	  <button id="btn_visual">Exec</button>
-	  <p id="visualOutput">[output]</p>
+	</td>
+	<td id="pos_y">[position]</td>
+      </tr>
+      <tr>
+	<td>
+	  <div>
+	    Analysis ID:
+	    <input type="number" id="id_analy" value="1" min="1" size="5"/>
+	    <button id="btn_analy">Exec</button>
+	    </div>
+	    <div id="analyOutput">[output]</div>	    
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <div>
+	    Request ID:
+	    <input type="number" id="id_visual" value="1" min="1" size="5"/>
+	    <button id="btn_visual">Exec</button>
+	  </div>
+	  <div id="visualOutput">[output]</div>
 	</td>
       </tr>
     </tbody>
@@ -57,9 +73,13 @@
 
   <div id="time-table" >
     Time:
-    <input id="slidvalmin" type="text" size="10" readonly />
-    <input id="slidvalmax" type="text" size="10" readonly />
+    <input id="slidvalmin" type="text" size="15" readonly />
+    <input id="slidvalmax" type="text" size="15" readonly />
+    
     <p id="slider"></p>
+    Position
+    <input type="radio"  name="q1" /> n
+    <input type="radio" name="q1" /> y
   </div>
 
 </body>
